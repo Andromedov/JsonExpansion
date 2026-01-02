@@ -1,8 +1,8 @@
 <div align="center">
 
-# 🧩 Paradise JSON Expansion
+# 🧩 JSON Expansion
 
-**A custom PlaceholderAPI expansion for reading local JSON files.** *Designed exclusively for **ParadiseCraft** to dynamically fetch data from external scripts and configurations.*
+**A custom PlaceholderAPI expansion for reading JSON files.**
 
 [![Java](https://img.shields.io/badge/Java-21%2B-ed8b00?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
 [![Gradle](https://img.shields.io/badge/Gradle-Build-02303a?style=for-the-badge&logo=gradle&logoColor=white)](https://gradle.org/)
@@ -18,7 +18,6 @@
 - **⚡ Smart Caching & Hot-Reload** Caches JSON content in RAM for instant access. Automatically detects file changes on disk and reloads only when necessary. **Zero performance impact.**
 - **🔍 Deep Nesting Support** Full support for dot notation to access nested keys (e.g., `messages.welcome.text`).
 - **🧠 Intelligent Matching** Correctly distinguishes between similar filenames (e.g., `shop.json` vs `shop_items.json`).
-- **✨ Clean Syntax** Simplified usage: no need to include `.json` in your placeholders.
 
 ---
 
@@ -51,7 +50,7 @@ Open your terminal in the project directory and run:
 ### 2. Install on Server
 1.  Stop your Minecraft server.
 2.  Navigate to `plugins/PlaceholderAPI/expansions/`.
-3.  Drop the `LocalJsonExpansion-1.x.x.jar` file there.
+3.  Drop the `JsonExpansion-1.x.x.jar` file there.
 4.  Start the server.
 
 ---
@@ -72,7 +71,7 @@ The pattern is:
 
 | Parameter       | Description                                               |
 |:----------------|:----------------------------------------------------------|
-| `<filename>`    | The name of the file **without** `.json`.                 |
+| `<filename>`    | The name of the file.                                     |
 | `<path_to_key>` | The key inside the JSON. Use dots `.` for nested objects. |
 
 ### 3. Examples
