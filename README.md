@@ -15,36 +15,18 @@
 ## ✨ Features
 
 - **📂 Local File Loading** Automatically scans and reads `.json` files from the `plugins/PlaceholderAPI/json/` directory.
-
 - **⚡ Smart Caching & Hot-Reload** Caches JSON content in RAM for instant access. Automatically detects file changes on disk and reloads only when necessary. **Zero performance impact.**
-
 - **🔍 Deep Nesting Support** Full support for dot notation to access nested keys (e.g., `messages.welcome.text`).
-
 - **🧠 Intelligent Matching** Correctly distinguishes between similar filenames (e.g., `shop.json` vs `shop_items.json`).
-
 - **✨ Clean Syntax** Simplified usage: no need to include `.json` in your placeholders.
 
 ---
-
-## 📂 Project Structure
-
-```text
-JsonExpansion/
-├── README.md               # Documentation
-├── build.gradle            # Gradle Build Configuration
-├── settings.gradle         # Gradle Settings
-└── src/
-    └── main/
-        └── java/
-            └── ua/paradise/json/
-                └── LocalJsonExpansion.java  # Main Expansion Logic
-```
 
 ## 🛠️ Prerequisites
 
 To build this project, you need:
 
-* **JDK 17** or higher.
+* **JDK 21** or higher.
 * **Gradle** (optional, wrapper is included).
 
 ---
@@ -69,7 +51,7 @@ Open your terminal in the project directory and run:
 ### 2. Install on Server
 1.  Stop your Minecraft server.
 2.  Navigate to `plugins/PlaceholderAPI/expansions/`.
-3.  Drop the `LocalJsonExpansion-1.0.1.jar` file there.
+3.  Drop the `LocalJsonExpansion-1.x.x.jar` file there.
 4.  Start the server.
 
 ---
