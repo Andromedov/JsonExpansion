@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.FileReader;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,15 +57,18 @@ public class JsonExpansion extends PlaceholderExpansion {
         File targetFile = null;
         String jsonKeyPath = "";
 
-        File[] files = jsonFolder.listFiles((dir, name) -> name.endsWith(".json"));
+        File[] files = jsonFolder.listFiles((dir, name) -> name.toLowerCase().endsWith(".json"));
         if (files == null) return "Error: No json folder";
+
+        Arrays.sort(files, (f1, f2) -> Integer.compare(f2.getName().length(), f1.getName().length()));
 
         for (File file : files) {
             String fileName = file.getName();
+            String simpleName = fileName.substring(0, fileName.lastIndexOf('.'));
 
-            if (params.startsWith(fileName + "_")) {
+            if (params.startsWith(simpleName + "_")) {
                 targetFile = file;
-                jsonKeyPath = params.substring(fileName.length() + 1);
+                jsonKeyPath = params.substring(simpleName.length() + 1);
                 break;
             }
         }
