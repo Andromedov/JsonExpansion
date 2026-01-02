@@ -39,7 +39,7 @@ public class JsonExpansion extends PlaceholderExpansion {
 
     @Override
     public @NotNull String getAuthor() {
-        return "ParadiseCraft";
+        return "Andromedov";
     }
 
     @Override
@@ -56,6 +56,7 @@ public class JsonExpansion extends PlaceholderExpansion {
     public @Nullable String onPlaceholderRequest(Player player, @NotNull String params) {
         File targetFile = null;
         String jsonKeyPath = "";
+        String paramsLower = params.toLowerCase();
 
         File[] files = jsonFolder.listFiles((dir, name) -> name.toLowerCase().endsWith(".json"));
         if (files == null) return "Error: No json folder";
@@ -64,11 +65,19 @@ public class JsonExpansion extends PlaceholderExpansion {
 
         for (File file : files) {
             String fileName = file.getName();
-            String simpleName = fileName.substring(0, fileName.lastIndexOf('.'));
+            String fileNameLower = fileName.toLowerCase();
 
-            if (params.startsWith(simpleName + "_")) {
+            String simpleNameLower = fileNameLower.substring(0, fileNameLower.lastIndexOf('.'));
+
+            if (paramsLower.startsWith(simpleNameLower + "_")) {
                 targetFile = file;
-                jsonKeyPath = params.substring(simpleName.length() + 1);
+                jsonKeyPath = params.substring(simpleNameLower.length() + 1);
+                break;
+            }
+
+            if (paramsLower.startsWith(fileNameLower + "_")) {
+                targetFile = file;
+                jsonKeyPath = params.substring(fileNameLower.length() + 1);
                 break;
             }
         }
@@ -89,7 +98,7 @@ public class JsonExpansion extends PlaceholderExpansion {
         String fileName = file.getName();
         long currentModified = file.lastModified();
 
-        if (jsonCache.containsKey(fileName) && fileLastModified.get(fileName) == currentModified) {
+        if (jsonCache.containsKey(fileName) && fileLastModified.getOrDefault(fileName, 0L) == currentModified) {
             return jsonCache.get(fileName);
         }
 

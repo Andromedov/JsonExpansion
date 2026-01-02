@@ -62,11 +62,11 @@ jobs:
           else
             echo "Found PR #$PR_NUMBER"
           
-            CHANGELOG=$(gh pr view $PR_NUMBER --json comments --jq ".comments[] | select(.author.login == \"$TARGET_USER\" and (.body | contains(\"📦 Mixer\") and contains(\"Changelog\"))) | .body" | tail -n 1)
+            CHANGELOG=$(gh pr view $PR_NUMBER --json comments --jq ".comments[] | select(.author.login == \"$TARGET_USER\" and (.body | contains(\"📦 JSON Expansion\") and contains(\"Changelog\"))) | .body" | tail -n 1)
           
             if [ -z "$CHANGELOG" ]; then
               echo "Not found in comments by $TARGET_USER, checking PR description..."
-              CHANGELOG=$(gh pr view $PR_NUMBER --json body,author --jq "select(.author.login == \"$TARGET_USER\" and (.body | contains(\"📦 Mixer\") and contains(\"Changelog\"))) | .body")
+              CHANGELOG=$(gh pr view $PR_NUMBER --json body,author --jq "select(.author.login == \"$TARGET_USER\" and (.body | contains(\"📦 JSON Expansion\") and contains(\"Changelog\"))) | .body")
             fi
           
             if [ -z "$CHANGELOG" ]; then
